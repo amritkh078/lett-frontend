@@ -28,7 +28,7 @@ export default function Navbar() {
     };
 
     return (
-        <header className=" text-white p-4 flex flex-row justify-between items-center z-100 text-white">
+        <header className="relative text-white p-4 flex flex-row justify-between items-center z-100 text-white">
 
 
             <button
