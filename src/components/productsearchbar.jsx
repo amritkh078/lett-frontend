@@ -1,4 +1,3 @@
-// src/components/ProductSearchBar.js
 import React from 'react';
 import { FiSearch, FiPlus, FiFileText, FiSettings } from 'react-icons/fi';
 

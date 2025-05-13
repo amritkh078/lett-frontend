@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 import ProductSearchBar from './ProductSearchBar';
 import ProductModal from './ProductModal';
-import { CloudCog } from 'lucide-react';
-
 const ProductTable = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
