@@ -60,8 +60,8 @@ const ProductTable = () => {
       />
 
 
-      <div className="w-[90%] max-w-[1200px] mx-auto bg-white shadow-md rounded-lg p-5">
-        <div className="flex font-bold mb-2 border-b pb-2">
+      <div className="w-full max-w- mx-auto mt-10 space-y-2 px-4">
+        <div className="flex items-center gap-2 font-semibold text-gray-700">
           <div className="flex-1">Article No.</div>
           <div className="flex-2">Product/Service</div>
           <div className="flex-1">In Price</div>
