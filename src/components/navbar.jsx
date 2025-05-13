@@ -4,6 +4,7 @@ import SeImage from '../assets/SE.png';
 import logo from '../assets/diamond.png';
 import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const languages = [
     { code: 'en', name: 'English', img: GbImage },
@@ -50,12 +51,12 @@ export default function Navbar() {
                     <img src={logo} alt="MyLogo" className="h-10 w-auto mr-2" />
                 </div>
 
-                <a href="#home" className="hover:text-gray-400 w-15">{t('home.nav.home')}</a>
+                <Link to="/terms" className="hover:text-gray-400 w-15">{t('home.nav.home')}</Link>
                 <a href="#about" className="hover:text-gray-400 w-20">{t('home.nav.about')}</a>
                 <a href="#about" className="hover:text-gray-400 w-25">{t('home.nav.contact')}</a>
                 <a href="#services" className="hover:text-gray-400 w-15">{t('home.nav.order')}</a>
                 <a href="#services" className="hover:text-gray-400 w-27">{t('home.nav.customers')}</a>
-                <a href="#services" className="hover:text-gray-400 w-20">{t('home.price')}</a>
+                <Link to="/pricelist"  className="hover:text-gray-400 w-20">{t('home.price')}</Link>
 
             </nav>
 

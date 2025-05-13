@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
-import { FaFileInvoice, FaUserAlt, FaBusinessTime, FaRegFileAlt, FaList, FaLayerGroup, FaSignOutAlt, FaBoxOpen, FaGift, FaFileImport, FaFileExport } from 'react-icons/fa';
+import {
+  FaFileInvoice,
+  FaUserAlt,
+  FaBusinessTime,
+  FaRegFileAlt,
+  FaList,
+  FaLayerGroup,
+  FaSignOutAlt,
+  FaBoxOpen,
+  FaGift,
+  FaFileImport,
+} from 'react-icons/fa';
+import { Menu, X } from 'lucide-react';
 
 const menuItems = [
   { name: 'Invoices', icon: <FaFileInvoice />, color: 'text-blue-800' },
@@ -16,25 +28,27 @@ const menuItems = [
   { name: 'Log out', icon: <FaSignOutAlt />, color: 'text-red-500' },
 ];
 
-function Sidebar() {
+function Sidebar({ isVisible }) {
   const [activeItem, setActiveItem] = useState('Price List');
+
   return (
-    <div>
+    <div
+      className={`bg-white border-r p-2 shadow-md transition-all duration-300 z-50
+        ${isVisible ? 'block' : 'hidden'} md:block w-[250px]`}
+    >
       <div className="p-4 border-b border-blue-500 w-[95%] mx-auto">
         <p className="text-xl text-center">Menu</p>
       </div>
-      <nav className="p-2">
+      <nav>
         <ul className="space-y-2">
-          {menuItems.map(item => (
+          {menuItems.map((item) => (
             <li
               key={item.name}
               onClick={() => setActiveItem(item.name)}
-              className={`text-black flex items-center space-x-2 p-2 rounded-md cursor-pointer 
-                ${activeItem === item.name ? 'bg-blue-500 text-white shadow-xl' : 'hover:bg-gray-200'}`}
+              className={`flex items-center space-x-2 p-2 rounded-md cursor-pointer
+                ${activeItem === item.name ? 'bg-blue-500 text-white' : 'hover:bg-gray-100'}`}
             >
-              <span className={`text-lg ${item.color}`}>
-                {item.icon}
-              </span>
+              <span className={`text-lg ${item.color}`}>{item.icon}</span>
               <span>{item.name}</span>
             </li>
           ))}
@@ -44,4 +58,6 @@ function Sidebar() {
   );
 }
 
+
 export default Sidebar;
+

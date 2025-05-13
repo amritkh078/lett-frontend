@@ -1,21 +1,28 @@
-import Sidebar from "../components/sidebar";
+import { useState } from 'react';
+import Sidebar from '../components/sidebar';
 import TopBar from '../components/topbar';
 import ProductTable from '../components/producttable';
 
 const PriceList = () => {
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false); // Default hidden on mobile
+
+  const toggleSidebar = () => {
+    setIsSidebarVisible((prev) => !prev);
+  };
+
   return (
-    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="h-screen flex flex-col bg-white">
       
-      <div style={{ height: '60px', width: '100%' }}>
-        <TopBar />
+      {/* TopBar */}
+      <div className="h-[60px] w-full">
+        <TopBar toggleSidebar={toggleSidebar} />
       </div>
 
-      <div style={{ display: 'flex', flex: 1}}>
-        <div style={{ width: '250px', backgroundColor: '#f0f0f0'}}>
-          <Sidebar />
-        </div>
-        
-        <div style={{ flex: 1, padding: '20px', overflowY: 'auto' }}>
+      {/* Layout */}
+      <div className="flex flex-1 overflow-hidden">
+        <Sidebar isVisible={isSidebarVisible} />
+
+        <div className="flex-1 p-4 overflow-y-auto">
           <ProductTable />
         </div>
       </div>
