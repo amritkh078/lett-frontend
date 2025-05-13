@@ -25,6 +25,7 @@ function MainContent() {
       
       <Routes>
         <Route path="/terms" element={<TermsPage />} />
+        <Route path="/" element={<TermsPage />} />
         <Route path="/pricelist" element={<PriceList />} />
       </Routes>
     </>
