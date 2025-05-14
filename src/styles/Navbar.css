@@ -1,0 +1,135 @@
+  .navbar {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  position: relative;
+  z-index: 100;
+}
+
+.hide-on-mobile {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: gray;
+}
+
+.lang-toggle {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  color: rgb(255, 255, 255);
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.lang-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  background: white;
+  color: black;
+  border-radius: 5px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 200;
+  min-width: max-content;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+
+.lang-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: auto;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+  }
+
+  .navbar-menu.mobile {
+    display: flex;
+    background-color: white;
+    color: black;
+    width: auto; 
+    padding: 0.5rem 1rem; 
+  }
+  .navbar-menu .nav-link {
+    color: black;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+
+  .navbar-menu .nav-link:hover {
+    background-color: #313030;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-menu.mobile {
+    top: calc(100% + 0.5rem);
+  }
+}
