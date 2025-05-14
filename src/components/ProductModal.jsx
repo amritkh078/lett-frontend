@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import '../styles/Modal.css';
 
 const ProductModal = ({ isOpen, onClose, productData, onUpdate }) => {
   const [formData, setFormData] = useState({
@@ -75,11 +76,11 @@ const ProductModal = ({ isOpen, onClose, productData, onUpdate }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center z-50 ">
-      <div className="bg-white p-6 rounded-lg w-full max-w-md">
-        <h2 className="text-xl font-semibold mb-4">{productData ? 'Edit Product' : 'Add New Product'}</h2>
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <h2 className="modal-heading">{productData ? 'Edit Product' : 'Add New Product'}</h2>
         <form onSubmit={handleSubmit} className="space-y-3">
-          {['articleNo', 'product', 'inPrice', 'price', 'unit', 'inStock', 'description'].map((field) => (
+          {['articleNo', 'product', 'inPrice', 'price', 'unit', 'inStock', 'description'].map((field) =>
             field !== 'description' ? (
               <input
                 key={field}
@@ -87,7 +88,7 @@ const ProductModal = ({ isOpen, onClose, productData, onUpdate }) => {
                 value={formData[field]}
                 onChange={handleChange}
                 placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                className="w-full p-2 border rounded"
+                className="form-input"
               />
             ) : (
               <textarea
@@ -96,22 +97,22 @@ const ProductModal = ({ isOpen, onClose, productData, onUpdate }) => {
                 value={formData[field]}
                 onChange={handleChange}
                 placeholder="Description"
-                className="w-full p-2 border rounded"
+                className="form-textarea"
                 rows="3"
               />
             )
-          ))}
-          <div className="flex justify-end space-x-2">
+          )}
+          <div className="button-container">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-1 rounded bg-gray-200 hover:bg-gray-300"
+              className="button-cancel"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="button-save"
             >
               Save
             </button>
