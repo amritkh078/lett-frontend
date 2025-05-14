@@ -1,0 +1,38 @@
+.product-list-container {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.product-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.product-column {
+  flex: 1;
+}
+
+.product-column-2 {
+  flex: 2;
+}
+
+.product-row {
+  display: flex;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 0.5rem;
+  align-items: center;
+}
+
+.product-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+

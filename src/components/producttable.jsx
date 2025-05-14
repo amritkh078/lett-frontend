@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 import ProductSearchBar from './ProductSearchBar';
 import ProductModal from './ProductModal';
+import '../styles/ProductTable.css';
+
 const ProductTable = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
@@ -60,43 +62,41 @@ const ProductTable = () => {
       />
 
 
-      <div className="w-full max-w- mx-auto mt-10 space-y-2 px-4">
-        <div className="flex items-center gap-2 font-semibold text-gray-700">
-          <div className="flex-1">Article No.</div>
-          <div className="flex-2">Product/Service</div>
-          <div className="flex-1">In Price</div>
-          <div className="flex-1">Price</div>
-          <div className="flex-1">Unit</div>
-          <div className="flex-1">In Stock</div>
-          <div className="flex-2">Description</div>
-          <div className="flex-1">Actions</div>
-        </div>
-        {products.map((product) => (
-          <div key={product.id} className="flex border-t pt-2 items-center">
-            <div className="flex-1">{product.articleNo}</div>
-            <div className="flex-2 truncate whitespace-nowrap">{product.product}</div>
-            <div className="flex-1">{product.inPrice}</div>
-            <div className="flex-1">{product.price}</div>
-            <div className="flex-1">{product.unit}</div>
-            <div className="flex-1">{product.inStock ? 'True' : 'False'}</div>
-            <div className="flex-2 truncate whitespace-nowrap">{product.description}</div>
-            <div className="flex-1 flex space-x-2">
-              <button
-                className="text-blue-500 hover:text-blue-700"
-                onClick={() => openEditModal(product)}
-              >
-                <FiEdit />
-              </button>
-               <button
-                className="text-red-500 hover:text-red-700"
-                onClick={() => handleDelete(product.id)}
-              >
-                <FiTrash />
-              </button>
-            </div>
-          </div>
-        ))}
+      <div className="product-list-container">
+      <div className="product-header">
+        <div className="product-column">Article No.</div>
+        <div className="product-column-2">Product/Service</div>
+        <div className="product-column">In Price</div>
+        <div className="product-column">Price</div>
+        <div className="product-column">Unit</div>
+        <div className="product-column">In Stock</div>
+        <div className="product-column-2">Description</div>
+        <div className="product-column">Actions</div>
       </div>
+      {products.map((product) => (
+        <div key={product.id} className="product-row">
+          <div className="product-column">{product.articleNo}</div>
+          <div className="product-column-2 product-truncate">{product.product}</div>
+          <div className="product-column">{product.inPrice}</div>
+          <div className="product-column">{product.price}</div>
+          <div className="product-column">{product.unit}</div>
+          <div className="product-column">{product.inStock ? 'True' : 'False'}</div>
+          <div className="product-column-2 product-truncate">{product.description}</div>
+          <div className="product-column action-buttons">
+            <button
+              onClick={() => openEditModal(product)}
+            >
+              <FiEdit />
+            </button>
+            <button
+              onClick={() => handleDelete(product.id)}
+            >
+              <FiTrash />
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
     </>
   );
 };
