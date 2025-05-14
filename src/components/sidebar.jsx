@@ -11,7 +11,7 @@ import {
   FaGift,
   FaFileImport,
 } from 'react-icons/fa';
-import { Menu, X } from 'lucide-react';
+import '../styles/SideBar.css';
 
 const menuItems = [
   { name: 'Invoices', icon: <FaFileInvoice />, color: 'text-blue-800' },
@@ -32,23 +32,19 @@ function Sidebar({ isVisible }) {
   const [activeItem, setActiveItem] = useState('Price List');
 
   return (
-    <div
-      className={`bg-white border-r p-2 shadow-md transition-all duration-300 z-50
-        ${isVisible ? 'block' : 'hidden'} md:block w-[250px]`}
-    >
-      <div className="p-4 border-b border-blue-500 w-[95%] mx-auto">
-        <p className="text-xl text-center">Menu</p>
+    <div className={`sidebar ${isVisible ? 'visible' : 'hidden-mobile'}`}>
+      <div className="sidebar-header">
+        <p className="sidebar-title">Menu</p>
       </div>
       <nav>
-        <ul className="space-y-2">
+        <ul className="sidebar-list">
           {menuItems.map((item) => (
             <li
               key={item.name}
               onClick={() => setActiveItem(item.name)}
-              className={`flex items-center space-x-2 p-2 rounded-md cursor-pointer
-                ${activeItem === item.name ? 'bg-blue-500 text-white' : 'hover:bg-gray-100'}`}
+              className={`sidebar-item ${activeItem === item.name ? 'active' : ''}`}
             >
-              <span className={`text-lg ${item.color}`}>{item.icon}</span>
+              <span className={`sidebar-icon ${item.color}`}>{item.icon}</span>
               <span>{item.name}</span>
             </li>
           ))}
