@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Terms.css';
 
 const TermsPage = () => {
   const [content, setContent] = useState("");
@@ -25,32 +26,28 @@ const TermsPage = () => {
   }, [i18n.language]);
 
   return (
-    <main className="bg-cover bg-no-repeat min-h-screen py-6">
-      <div className="flex justify-center mb-4">
-        <a className="text-white text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">{t('home.terms')}</a>
-      </div>
+    <main className="terms-main">
+      <section className="terms-section">
+        <a className="terms-heading">{t('home.terms')}</a>
 
-      <div className="text-white flex items-center justify-center">
-        <a
-          onClick={() => closeAndGoBack()}
-          className="bg-green-600 font-medium rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 m-2"
+        <button
+          onClick={closeAndGoBack}
+          className="terms-button"
         >
           {t('home.goBack')}
-        </a>
-      </div>
+        </button>
 
-      <div className="p-4 bg-white rounded-lg shadow-md max-w-2xl mx-auto mt-10">
-        {content}
-      </div>
+        <div className="terms-content">
+          {content}
+        </div>
 
-      <div className="text-white flex items-center justify-center mt-6">
-        <a
-          onClick={() => closeAndGoBack()}
-          className="bg-green-600 font-medium rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 m-4"
+        <button
+          onClick={closeAndGoBack}
+          className="terms-button"
         >
           {t('home.goBack')}
-        </a>
-      </div>
+        </button>
+      </section>
     </main>
   );
 };
