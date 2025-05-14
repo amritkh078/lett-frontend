@@ -4,13 +4,14 @@ import GbImage from '../assets/GB.png';
 import SeImage from '../assets/SE.png';
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import '../styles/TopBar.css';
 
 const languages = [
   { code: 'en', name: 'English', img: GbImage },
   { code: 'sv', name: 'Svenska', img: SeImage },
 ];
 
-function TopBar({ toggleSidebar }) {
+function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
   const { i18n } = useTranslation();
 
@@ -20,42 +21,38 @@ function TopBar({ toggleSidebar }) {
   );
 
   return (
-    <div className="bg-blue-500 text-white flex justify-between items-center px-4 py-2">
-      
-      {/* Burger icon on mobile */}
-      <button className="md:hidden mr-2" onClick={toggleSidebar}>
+    <div className="top-bar">
+      {/* <button className="menu-button" onClick={toggleSidebar}>
         <Menu size={24} />
-      </button>
+      </button> */}
 
-      {/* Profile */}
-      <div className="flex items-center">
-        <img src={profileImage} alt="Profile" className="mr-2 rounded-full" width="40" />
-        <div className="flex flex-col">
-          <span className="font-bold">John Andre</span>
-          <span className="text-xs">Storfjord AS</span>
+      <div className="profile-info">
+        <img src={profileImage} alt="Profile" className="profile-image" width="40" />
+        <div className="profile-text">
+          <span className="profile-name">John Andre</span>
+          <span className="profile-company">Storfjord AS</span>
         </div>
       </div>
 
-      {/* Language selector */}
-      <div className="relative">
-        <div className="flex items-center p-1 gap-2 cursor-pointer" onClick={() => setIsOpen(true)}>
+      <div className="language-selector">
+        <div className="language-toggle" onClick={() => setIsOpen(true)}>
           <span>{currentLanguage?.name}</span>
-          <img src={currentLanguage?.img} alt={currentLanguage?.name} className="w-6 h-6" />
+          <img src={currentLanguage?.img} alt={currentLanguage?.name} className="flag-icon" />
         </div>
         {isOpen && (
-          <div className="absolute right-0 mt-8 bg-white text-black rounded shadow-lg p-2">
-            <ul className="space-y-2">
+          <div className="language-dropdown">
+            <ul>
               {languages.map((lang) => (
                 <li
                   key={lang.code}
-                  className="flex items-center gap-2 cursor-pointer"
+                  className="language-option"
                   onClick={() => {
                     i18n.changeLanguage(lang.code);
                     setIsOpen(false);
                   }}
                 >
                   <span>{lang.name}</span>
-                  <img src={lang.img} alt={lang.name} className="w-6 h-6" />
+                  <img src={lang.img} alt={lang.name} className="flag-icon" />
                 </li>
               ))}
             </ul>
